@@ -59,11 +59,13 @@ public class TwoWheelTrackingLocalizer extends TwoTrackingWheelLocalizer {
         ));
 
         this.drive = drive;
+        //TwoWheelConfig("frontLeft", true, Point(-0.1,0.0)),
+        //        TwoWheelConfig("backRight", true, Point(2.85,-4.45))
+        parallelEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "frontLeft"));
+        perpendicularEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "backRight"));
 
-        parallelEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "parallelEncoder"));
-        perpendicularEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "perpendicularEncoder"));
-
-        // TODO: reverse any encoders using Encoder.setDirection(Encoder.Direction.REVERSE)
+        //  parallelEncoder.setDirection(Encoder.Direction.REVERSE);
+        //  perpendicularEncoder.setDirection(Encoder.Direction.REVERSE);
     }
 
     public static double encoderTicksToInches(double ticks) {
